@@ -1,0 +1,39 @@
+<table>
+    <thead>
+        <tr>
+            <th>접수일자</th>
+            <th>기업명</th>
+            <th>보고서명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="notice : ${notices}">
+            <td th:text="${#temporals.format(notice.recptDt, 'yyyy-MM-dd')}"></td>
+            <td th:text="${notice.corpName}"></td>
+            <td th:text="${notice.reportNm}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- 페이징 네비게이션 -->
+<style>
+    ul.pagination li {
+        display: inline-block; /* inline 또는 inline-block 중 선택 가능 */
+        margin-right: 8px; /* 간격 조정 */
+    }
+</style>
+
+<div>
+    <ul class="pagination">
+        <li th:if="${currentPage > 0}">
+            <a th:href="@{'/notices'(page=${currentPage - 1})}">이전</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+            th:classappend="${i == currentPage} ? 'active'">
+            <a th:href="@{'/notices'(page=${i})}" th:text="${i + 1}">1</a>
+        </li>
+        <li th:if="${currentPage < totalPages - 1}">
+            <a th:href="@{'/notices'(page=${currentPage + 1})}">다음</a>
+        </li>
+    </ul>
+</div>

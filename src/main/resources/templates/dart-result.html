@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>DART 결과</title>
+</head>
+<body>
+<h2>공시 결과</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>회사명</th>
+        <th>공시 제목</th>
+        <th>접수번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${reports}">
+        <td th:text="${item.corpName}"></td>
+        <td th:text="${item.reportNm}"></td>
+        <td th:text="${item.rceptNo}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><a href="/notice/form">← 다시 검색하기</a>
+</body>
+</html>
