@@ -16,6 +16,9 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+# DartApiClient.java Git 추적 방지
+/src/main/java/com/dartNotice/client/
+
 
 ### IntelliJ IDEA ###
 .idea
